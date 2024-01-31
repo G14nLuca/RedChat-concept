@@ -1,16 +1,25 @@
+const { Client, LocalAuth } = require('whatsapp-web.js');
 const qrcode = require('qrcode-terminal');
 
-const { Client, LocalAuth } = require('whatsapp-web.js');
-const client = new Client();
+const client = new Client({
+	puppeteer: { 
+		headless: true
+	},
+
+	authStrategy: new LocalAuth({
+		dataPath: 'storage',
+		clientId: 'test'
+	})
+});
 
 //gerar qrcode
 client.on('qr', (qr) => {
-    qrcode.generate(qr, { small: true });
+	qrcode.generate(qr, { small: true });
 });
 
 //avisar quando o cliente está pronto para funcionar
 client.on('ready', () => {
-    console.log('Client is ready!');
+	console.log('Client is ready!');
 });
 
 //imprimir no terminal as mensgens recebidas
