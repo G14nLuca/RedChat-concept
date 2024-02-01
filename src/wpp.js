@@ -5,6 +5,11 @@ class WPP {
 
   #client
 
+  static getClient() {
+    if (this.client === undefined) this.client = new WPP();
+    return this.client;
+  }
+
   constructor() {
 
     this.#client = new Client({
@@ -13,7 +18,7 @@ class WPP {
       },
 
       authStrategy: new LocalAuth({
-        dataPath: '../storage',
+        dataPath: './storage',
         clientId: 'test'
       })
     });
@@ -50,7 +55,7 @@ class WPP {
     this.#client.initialize();
   }
 
-  getInstance(){
+  getInstance() {
     if (!this.#client) throw new Error('Cliente não inicializado');
     return this.#client;
   }
