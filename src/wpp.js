@@ -1,9 +1,11 @@
 const { Client, LocalAuth } = require('whatsapp-web.js');
 const qrcode = require('qrcode-terminal');
+const MenuManager = require('./menuManager');
 
 class WPP {
 
   #client
+  #menuManager
 
   static getClient() {
     if (this.client === undefined) this.client = new WPP();
@@ -23,6 +25,8 @@ class WPP {
       })
     });
 
+    this.#menuManager = new MenuManager(this.#client);
+
     this.setupEventListeners();
   }
 
@@ -37,17 +41,14 @@ class WPP {
     });
 
     this.#client.on('message', (message) => {
-      console.log(message.body);
-      if (message.body === '!ping') {
-        this.sendMessage(message.from, 'pong');
-      }
+      this.#menuManager.tratarMensagemRecebida(message);
     });
 
   }
 
-  async sendMessage(to, message) {
+  async sendMessage(mensagem) {
     if (!this.#client) throw new Error('Cliente não inicializado');
-    await this.#client.sendMessage(to, message);
+    await this.#client.sendMessage(message.from, message);
   }
 
   initialize() {
