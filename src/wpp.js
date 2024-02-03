@@ -41,12 +41,12 @@ class WPP {
     });
 
     this.#client.on('message', (message) => {
-      this.#menuManager.tratarMensagemRecebida(message);
+      this.#menuManager.handleReceivedMessage(message);
     });
 
   }
 
-  async sendMessage(mensagem) {
+  async sendMessage(message) {
     if (!this.#client) throw new Error('Cliente não inicializado');
     await this.#client.sendMessage(message.from, message);
   }
