@@ -1,9 +1,23 @@
 # WPP Project
 
-Este projeto é uma prova de conceito (Proof of Concept - PoC) para analisar o tempo gasto e as principais dificuldades enfrentadas pelo tme de desenvolvimento no desenvolvimento de um bot para o WhatsApp utilizando a bibloteca `whatsapp-web.js` para futuros projetos da RedBox Inc.
+## Descrição
 
-## Lista de pendências
+Este projeto é uma prova de conceito (Proof of Concept - PoC) para analisar o tempo gasto e as principais dificuldades enfrentadas pelo time de desenvolvimento no desenvolvimento de um bot para o WhatsApp utilizando a bibloteca `whatsapp-web.js` para futuros projetos da RedBox Inc. Simulando uma empresa chamada "Clube do Controle", este projeto tem como principal objetivo desenvolver as seguintes funcionalidades para o bot:
 
-Criar 3 menus de forma que o primeiro e o segundo menu são acessíveis do menu inicial e o terceiro como um submenu do segundo menu;
-Criar um menu inicial para acessar as opções anteriormente descritas;
-Criar um gerenciador de estados para monitorar o fluxo de conversas do usuário;
+ - Mostrar o catálogo da loja (o nome e o preço dos itens);
+ - Adicionar os itens para um carrinho próprio do cliente;
+ - Simular o processo de checkout de um pedido;
+ - Falar com um atendente humano;
+
+## Lista de tarefas
+
+- ~~Criar e enviar menu inicial quando o cliente mandar uma saudação qualquer;~~
+- ~~Enviar aviso de erro ao enviar uma mensagem inválida;~~
+- ~~Criar um gerenciador de menus para monitorar;~~
+- ~~Inicializar demais menus com um template básico;~~
+- ~~Realizar troca de contexto entre menus;~~
+- Criar catálogo de produtos;
+- Enviar catálogo de produtos de forma que o cliente pode navegar em "páginas" de até 5 itens;
+- Adicionar produtos ao carrinho do cliente;
+- Simular o processo de checkout do pedido dos produtos do carrinho;
+- "Pausar" o bot para que um atendente humano possa conversar com o cliente quando solicitado;
