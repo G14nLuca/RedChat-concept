@@ -16,8 +16,8 @@ Este projeto é uma prova de conceito (Proof of Concept - PoC) para analisar o t
 - ~~Criar um gerenciador de menus para monitorar;~~
 - ~~Inicializar demais menus com um template básico;~~
 - ~~Realizar troca de contexto entre menus;~~
-- Criar catálogo de produtos;
-- Enviar catálogo de produtos de forma que o cliente pode navegar em "páginas" de até 5 itens;
+- ~~Criar catálogo de produtos;~~
+- ~~Enviar catálogo de produtos de forma que o cliente pode navegar em "páginas" de até 5 itens;~~
 - Adicionar produtos ao carrinho do cliente;
 - Simular o processo de checkout do pedido dos produtos do carrinho;
 - "Pausar" o bot para que um atendente humano possa conversar com o cliente quando solicitado;
