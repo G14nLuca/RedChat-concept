@@ -1,5 +1,8 @@
 const MENUS = require('./submenus/index.js');
-const menuInicial = require('./submenus/inicial.js')
+const menuInicial = require('./submenus/inicial.js');
+const menuCatalogo = require('./submenus/catalogo.js');
+const menuCarrinho = require('./submenus/carrinho.js');
+const menuAtendente = require('./submenus/atendente.js');
 
 class MenuManager {
 
@@ -38,32 +41,18 @@ class MenuManager {
         }
         break;
 
-     /* case MENUS.CATALOGO:
-        if (this.#welcomeMessage) {
-          await menuInicial.handleMensagemBoasVindas(message, this);
-          this.setWelcome(false);
-        } else {
-          await menuInicial.handleMenuInicial(message, this);
-        }
+      case MENUS.CATALOGO:
+        await menuCatalogo.handleMenuCatalogo(message, this);
         break;
 
       case MENUS.CARRINHO:
-        if (this.#welcomeMessage) {
-          await menuInicial.handleMensagemBoasVindas(message, this);
-          this.setWelcome(false);
-        } else {
-          await menuInicial.handleMenuInicial(message, this);
-        }
+        await menuCarrinho.handleMenuCarrinho(message, this);
         break;
 
       case MENUS.ATENDENTE:
-        if (this.#welcomeMessage) {
-          await menuInicial.handleMensagemBoasVindas(message, this);
-          this.setWelcome(false);
-        } else {
-          await menuInicial.handleMenuInicial(message, this);
-        }
-        break;*/
+        await menuAtendente.handleMenuAtendente(message, this);
+        break;
+
     }
   }
 
