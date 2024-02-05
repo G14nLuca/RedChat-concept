@@ -7,22 +7,21 @@ const mensagens = {
     },
 };
 
+async function handleBoasVindasAtendente(message, menuManager) {
+    await menuManager.sendMessage(message.from, mensagens.bemVindo.content);
+}
+
 async function handleMenuAtendente(message, menuManager) {
     switch (message.body) {
-
         case "#bot":
             await menuManager.sendMessage(message.from, mensagens.retorno.content);
             menuManager.setMenu(parseInt(0));
-            menuManager.setWelcome(true);
+            menuManager.setHumanContact(true);
             menuManager.handleMessageMenu(message);
-            break;
-
-        default:
-            await menuManager.sendMessage(message.from, mensagens.bemVindo.content);
             break;
     }
 }
 
 module.exports = {
-    handleMenuAtendente
+    handleBoasVindasAtendente, handleMenuAtendente
 };

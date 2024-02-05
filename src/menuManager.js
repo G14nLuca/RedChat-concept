@@ -9,11 +9,13 @@ class MenuManager {
   #client
   #currentMenu
   #welcomeMessage
+  #humanContact
 
   constructor(client) {
     this.#client = client;
     this.#currentMenu = MENUS.INICIAL;
     this.#welcomeMessage = true;
+    this.#humanContact = true;
   }
 
   setMenu(menu) {
@@ -22,6 +24,10 @@ class MenuManager {
 
   setWelcome(welcome) {
     this.#welcomeMessage = welcome;
+  }
+
+  setHumanContact(human){
+    this.#humanContact = human;
   }
 
   async handleReceivedMessage(message) {
@@ -50,7 +56,12 @@ class MenuManager {
         break;
 
       case MENUS.ATENDENTE:
-        await menuAtendente.handleMenuAtendente(message, this);
+        if (this.#humanContact) {
+          await menuAtendente.handleBoasVindasAtendente(message, this);
+          this.setHumanContact(false);
+        } else {
+          await menuAtendente.handleMenuAtendente(message, this);
+        }
         break;
 
     }
