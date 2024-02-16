@@ -21,3 +21,5 @@ Este projeto é uma prova de conceito (Proof of Concept - PoC) para analisar o t
 ~~- "Pausar" o bot para que um atendente humano possa conversar com o cliente quando solicitado;~~
 - Adicionar produtos ao carrinho do cliente;
 - Simular o processo de checkout do pedido dos produtos do carrinho;
+- Gerenciar múltiplas sessões de diferentes clientes;
+- Adicionar timeout para encerrar a sessão após determinado tempo

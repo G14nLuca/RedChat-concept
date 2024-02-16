@@ -1,50 +1,40 @@
 const MENUS = require('./submenus/index.js');
+const { createSession } = require('./sesssionManagement.js');
 const menuInicial = require('./submenus/inicial.js');
 const menuCatalogo = require('./submenus/catalogo.js');
 const menuCarrinho = require('./submenus/carrinho.js');
 const menuAtendente = require('./submenus/atendente.js');
+const { getSession } = require('./sesssionManagement.js');
 
 class MenuManager {
 
   #client
-  #currentMenu
-  #welcomeMessage
-  #humanContact
 
   constructor(client) {
     this.#client = client;
-    this.#currentMenu = MENUS.INICIAL;
-    this.#welcomeMessage = true;
-    this.#humanContact = true;
-  }
-
-  setMenu(menu) {
-    this.#currentMenu = menu;
-  }
-
-  setWelcome(welcome) {
-    this.#welcomeMessage = welcome;
-  }
-
-  setHumanContact(human){
-    this.#humanContact = human;
   }
 
   async handleReceivedMessage(message) {
-    console.log(`Mensagem recebida: ${message.body}`);
-    this.handleMessageMenu(message);
+    var clientPhone = message.from;
+    var session = getSession(clientPhone);
+    console.log(message.body);
+    this.handleMessageMenu(message, session);
   }
 
-  async handleMessageMenu(message) {
-    switch (this.#currentMenu) {
+  async handleMessageMenu(message, session) {
+
+    switch (session.getCurrentMenu()) {
 
       case MENUS.INICIAL:
-        if (this.#welcomeMessage) {
+
+        if (session.getWelcome()) {
           await menuInicial.handleMensagemBoasVindas(message, this);
-          this.setWelcome(false);
+          session.setWelcome(false);
+
         } else {
-          await menuInicial.handleMenuInicial(message, this);
+          await menuInicial.handleMenuInicial(session, message, this);
         }
+
         break;
 
       case MENUS.CATALOGO:
@@ -56,7 +46,7 @@ class MenuManager {
         break;
 
       case MENUS.ATENDENTE:
-        if (this.#humanContact) {
+        if (session.getHumanContact()) {
           await menuAtendente.handleBoasVindasAtendente(message, this);
           this.setHumanContact(false);
         } else {
