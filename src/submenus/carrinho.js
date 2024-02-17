@@ -7,12 +7,12 @@ const mensagens = {
     },
 };
 
-async function handleMenuCarrinho(message, menuManager) {
+async function handleMenuCarrinho(session, message, menuManager) {
     switch (message.body) {
         case "0":
-            menuManager.setMenu(parseInt(message.body));
-            menuManager.setWelcome(true);
-            menuManager.handleMessageMenu(message);
+            session.setCurrentMenu(parseInt(message.body));
+            session.setWelcome(true);
+            menuManager.handleMessageMenu(message, session);
             break;
         default:
             await menuManager.sendMessage(message.from, mensagens.bemVindo.content);

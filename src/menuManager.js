@@ -1,5 +1,4 @@
 const MENUS = require('./submenus/index.js');
-const { createSession } = require('./sesssionManagement.js');
 const menuInicial = require('./submenus/inicial.js');
 const menuCatalogo = require('./submenus/catalogo.js');
 const menuCarrinho = require('./submenus/carrinho.js');
@@ -38,19 +37,19 @@ class MenuManager {
         break;
 
       case MENUS.CATALOGO:
-        await menuCatalogo.handleMenuCatalogo(message, this);
+        await menuCatalogo.handleMenuCatalogo(session, message, this);
         break;
 
       case MENUS.CARRINHO:
-        await menuCarrinho.handleMenuCarrinho(message, this);
+        await menuCarrinho.handleMenuCarrinho(session, message, this);
         break;
 
       case MENUS.ATENDENTE:
         if (session.getHumanContact()) {
           await menuAtendente.handleBoasVindasAtendente(message, this);
-          this.setHumanContact(false);
+          session.setHumanContact(false);
         } else {
-          await menuAtendente.handleMenuAtendente(message, this);
+          await menuAtendente.handleMenuAtendente(session, message, this);
         }
         break;
 

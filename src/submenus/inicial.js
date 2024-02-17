@@ -7,7 +7,8 @@ const mensagens = {
   },
 };
 
-async function handleMensagemBoasVindas(message, menuManager) {''
+async function handleMensagemBoasVindas(message, menuManager) {
+  ''
   await menuManager.sendMessage(message.from, mensagens.bemVindo.content);
 }
 
@@ -19,11 +20,11 @@ async function handleMenuInicial(session, message, menuManager) {
       menuManager.handleMessageMenu(message, session);
       break;
     case "2":
-      session.setMenu(parseInt(message.body));
+      session.setCurrentMenu(parseInt(message.body));
       menuManager.handleMessageMenu(message, session);
       break;
     case "3":
-      session.setMenu(parseInt(message.body));
+      session.setCurrentMenu(parseInt(message.body));
       menuManager.handleMessageMenu(message, session);
       break;
     default:
