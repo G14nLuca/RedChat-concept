@@ -1,8 +1,9 @@
 const items = require('./items_index');
 
+
 const mensagens = {
   instrucoes: {
-    content: "Para adicionar um item ao carrinho, mande uma mensagem com a palavra 'add' e o número do id do item. \nPara avançar para a próxima página, digite 'próximo'. \nPara retroceder uma página, digite 'anterior'. \nPara ver seu carrinho, digite 'carrinho'. \nPara voltar ao menu principal, digite '0'. ",
+    content: "Para adicionar um item ao carrinho, mande uma mensagem com a palavra '#' e o número do id do item. \nPara avançar para a próxima página, digite 'P'. \nPara retroceder uma página, digite 'A'. \nPara ver seu carrinho, digite 'C'. \nPara voltar ao menu principal, digite '0'. ",
   },
   erroEscolha: {
     content: "Por favor, escolha uma opção válida.",
@@ -36,16 +37,22 @@ async function sendCatalogPage(menuManager, page, destination) {
 
 async function handleMenuCatalogo(session, message, menuManager) {
 
-  const destination = message.from;
+  var content = message.body;
+  var destination = message.from;
 
-  switch (message.body) {
+  if (content.includes('#')){
+    var item = content.split("#")[1];
+    session.getCart().addToCart(item);
+  }
 
-    case "próximo":
+  switch (content) {
+
+    case "P":
       currentPage++;
       await sendCatalogPage(menuManager, currentPage, destination);
       break;
 
-    case "anterior":
+    case "A":
       if (currentPage == 1) {
         await menuManager.sendMessage(destination, "Você já está na primeira página.");
         await sendCatalogPage(menuManager, currentPage, destination);

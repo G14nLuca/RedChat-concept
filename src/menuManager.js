@@ -16,7 +16,6 @@ class MenuManager {
   async handleReceivedMessage(message) {
     var clientPhone = message.from;
     var session = getSession(clientPhone);
-    console.log(message.body);
     this.handleMessageMenu(message, session);
   }
 

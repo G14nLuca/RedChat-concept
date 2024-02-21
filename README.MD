@@ -19,7 +19,10 @@ Este projeto é uma prova de conceito (Proof of Concept - PoC) para analisar o t
 - ~~Criar catálogo de produtos;~~
 - ~~Enviar catálogo de produtos de forma que o cliente pode navegar em "páginas" de até 5 itens;~~
 ~~- "Pausar" o bot para que um atendente humano possa conversar com o cliente quando solicitado;~~
-- Adicionar produtos ao carrinho do cliente;
-- Simular o processo de checkout do pedido dos produtos do carrinho;
-- Gerenciar múltiplas sessões de diferentes clientes;
-- Adicionar timeout para encerrar a sessão após determinado tempo
+~~- Gerenciar múltiplas sessões de diferentes clientes;~~
+~~- Adicionar timeout para encerrar a sessão após determinado tempo;~~
+- Avisar para o cliente que sua sessão foi encerrada;
+~~- Adicionar produtos ao carrinho do cliente a partir da página de católogo;~~
+- Tratamento do Menu Carrinho:
+  - Mostrar itens adicionados ao carrinho;
+  - Remover item do carrinho;
